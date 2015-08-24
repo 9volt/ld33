@@ -11,10 +11,12 @@ public class building_exploder : MonoBehaviour {
 	public Renderer rend;
 	public Texture burned;
 	public string name;
+	AudioSource source;
 
 	// Use this for initialization
 	void Start () {
-		rend = GetComponent<Renderer> ();
+		rend = GetComponent<Renderer>();
+		source = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -39,9 +41,9 @@ public class building_exploder : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision){
 		if (collision.collider.gameObject == ball) {
-			Debug.Log ("BOOM");
+			source.Play();
 			Camera.main.GetComponent<gui>().increaseScore(name, points);
-			GameObject go = (GameObject)Instantiate(explosion, GetRandomPointInBoxCollider(col), collision.transform.rotation);
+			Instantiate(explosion, GetRandomPointInBoxCollider(col), collision.transform.rotation);
 			health--;
 			if(health == 0){
 				Instantiate(fire, GetRandomPointInBoxCollider(col), collision.transform.rotation);

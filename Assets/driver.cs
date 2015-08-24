@@ -10,6 +10,7 @@ public class driver : MonoBehaviour {
 	public GameObject explosion;
 	public int points = 50;
 
+	
 	// Use this for initialization
 	void Start () {
 		Renderer rend = GetComponent<Renderer> ();
