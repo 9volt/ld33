@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class gui : MonoBehaviour {
-	private int score;
+	public int score;
 	private string extra;
 	private string cur_ex;
 	private int cur_count;
@@ -35,9 +35,19 @@ public class gui : MonoBehaviour {
 	}
 
 	void OnGUI(){
+		int highscore = 0;
+		if (PlayerPrefs.HasKey ("high_score")) {
+			if(PlayerPrefs.GetInt("high_score") < score){
+				PlayerPrefs.SetInt("high_score", score);
+			}
+		} else {
+			PlayerPrefs.SetInt ("high_score", score);
+		}
+		highscore = PlayerPrefs.GetInt("high_score");
 		if (extra != null){
 			GUI.Label(new Rect((Screen.width / 9) - 100, (Screen.height /9) + 0, 200, Screen.height), extra, gs);
 		}
+		GUI.Label(new Rect((Screen.width / 9) - 100, (Screen.height /9) - 60, 200, 60), "High Score: " + highscore, gs);
 		GUI.Label(new Rect((Screen.width / 9) - 100, (Screen.height /9) - 40, 200, 60), "Score: " + score, gs);
 		if (tut & (System.DateTime.Now.Second % 2 != 0)){
 			GUI.Label(new Rect((Screen.width / 2 -200), (Screen.height - 55),50, 38), a1);
