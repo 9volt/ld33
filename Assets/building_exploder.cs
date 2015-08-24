@@ -10,6 +10,7 @@ public class building_exploder : MonoBehaviour {
 	public BoxCollider col;
 	public Renderer rend;
 	public Texture burned;
+	public string name;
 
 	// Use this for initialization
 	void Start () {
@@ -39,11 +40,14 @@ public class building_exploder : MonoBehaviour {
 	void OnCollisionEnter(Collision collision){
 		if (collision.collider.gameObject == ball) {
 			Debug.Log ("BOOM");
+			Camera.main.GetComponent<gui>().increaseScore(name, points);
 			GameObject go = (GameObject)Instantiate(explosion, GetRandomPointInBoxCollider(col), collision.transform.rotation);
 			health--;
 			if(health == 0){
 				Instantiate(fire, GetRandomPointInBoxCollider(col), collision.transform.rotation);
 				rend.material.mainTexture = burned;
+				rend.material.SetTexture("_EmissionMap", null);
+				rend.material.SetColor("_EmissionColor", Color.black);
 			}
 		}
 	}

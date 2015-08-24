@@ -61,7 +61,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184048}
-  m_Mesh: {fileID: 4300000, guid: 5391f23354e46aa41b46c54405bf86d0, type: 3}
+  m_Mesh: {fileID: 4300000, guid: c9bf891bc5d90d946916388276ebe5d3, type: 3}
 --- !u!65 &6567030
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -85,12 +85,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a953cec4702e32a41a0a3ffb0e987efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+  explosion: {fileID: 100010, guid: ccb6ecb6fa15d7848b924b7e46624497, type: 2}
   fire: {fileID: 100000, guid: bf495eacf58e31146ab012aa89ac68da, type: 2}
   health: 1
   points: 100
   ball: {fileID: 0}
   col: {fileID: 6567030}
+  rend: {fileID: 0}
+  burned: {fileID: 2800000, guid: 33e4437e8c70d3f47a05c3bc4f276736, type: 3}
+  name: House
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -113,6 +116,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
       value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: c9bf891bc5d90d946916388276ebe5d3, type: 3}
+    - target: {fileID: 0}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 100010, guid: ccb6ecb6fa15d7848b924b7e46624497, type: 2}
+    - target: {fileID: 0}
+      propertyPath: burned
+      value: 
+      objectReference: {fileID: 2800000, guid: 33e4437e8c70d3f47a05c3bc4f276736, type: 3}
+    - target: {fileID: 0}
+      propertyPath: name
+      value: House
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

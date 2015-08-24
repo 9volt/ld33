@@ -15,7 +15,7 @@ public class paddle : MonoBehaviour {
 	void Update () {
 		JointSpring js = hj.spring;
 		if(CrossPlatformInputManager.GetButton(key)) {
-			js.targetPosition = 40f;
+			js.targetPosition = 45f;
 		} else {
 			js.targetPosition = -10f;
 		}
