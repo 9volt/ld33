@@ -10,6 +10,10 @@ public class reset : MonoBehaviour {
 	float f;
 	bool launched;
 	GUIStyle gs;
+	public Texture2D tex;
+	public Texture2D bactex;
+	public Texture2D full_tex;
+	public Font font;
 	// Use this for initialization
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody>();
@@ -20,6 +24,7 @@ public class reset : MonoBehaviour {
 		f = 0.0f;
 		launched = false;
 		gs = new GUIStyle();
+		gs.font = font;
 		gs.normal.textColor = Color.yellow;
 	}
 	
@@ -58,10 +63,22 @@ public class reset : MonoBehaviour {
 	}
 	
 	void OnGUI(){
+
 		if (spinning) {
-			GUI.Label (new Rect ((Screen.width / 2) - 100, (Screen.height / 2) + 0, 200, Screen.height), (f / 20).ToString () + "%", gs);
+			GUI.Label (new Rect ((Screen.width / 2) + 230, (Screen.height / 2) + 52, 200, Screen.height), (f / 20).ToString () + "%", gs);
+			GUI.skin.box.normal.background = bactex;
+			GUI.Box (new Rect ((Screen.width / 2) -200, (Screen.height / 2) + 50, 400, 20),"");
+			if (f != null){
+				if ( f < 2000f){
+					GUI.skin.box.normal.background = tex;
+				}else{
+					GUI.skin.box.normal.background = full_tex;
+				}
+				GUI.Box (new Rect ((Screen.width / 2)-200, (Screen.height / 2) + 50, f/5, 20),"");
+			}
 		} else if (!launched) {
-			GUI.Label (new Rect ((Screen.width / 2) - 100, (Screen.height / 2) + 0, 200, Screen.height), "Hold [SPACE] to charge", gs);
+			GUI.Box (new Rect ((Screen.width / 2) -200, (Screen.height / 2) + 50, 400, 20),"");
+			GUI.Label (new Rect ((Screen.width / 2) - 100,  (Screen.height / 2) + 50, 200, Screen.height), "Hold [SPACE] to charge", gs);
 		}
 	}
 }
