@@ -16,6 +16,8 @@ public class reset : MonoBehaviour {
 	public Font font;
 	public AudioSource source;
 	public AudioClip launch;
+	public GameObject backstop;
+	float launch_time;
 	// Use this for initialization
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody>();
@@ -28,22 +30,23 @@ public class reset : MonoBehaviour {
 		gs = new GUIStyle();
 		gs.font = font;
 		gs.normal.textColor = Color.yellow;
+		backstop.SetActive(false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(!launched){
-			if (CrossPlatformInputManager.GetButton("Jump")) {
-				if(spinning) {
-					if(f >= 2000f){
+		if (!launched) {
+			if (CrossPlatformInputManager.GetButton ("Jump")) {
+				if (spinning) {
+					if (f >= 2000f) {
 						gs.normal.textColor = Color.red;
 					} else {
 						f += 25f;
 					}
-					rb.AddTorque(rb.angularVelocity + Vector3.right * 10f);
+					rb.AddTorque (rb.angularVelocity + Vector3.right * 10f);
 					source.pitch = f / 666f;
 				} else {
-					source.Play();
+					source.Play ();
 					spinning = true;
 					rb.useGravity = false;
 					rb.velocity = Vector3.zero;
@@ -52,7 +55,11 @@ public class reset : MonoBehaviour {
 					transform.rotation = start_rot;
 				}
 			} else if (spinning) {
-				Launch();
+				Launch ();
+			}
+		} else {
+			if(Time.timeSinceLevelLoad - launch_time > 2f){
+				backstop.gameObject.SetActive(true);
 			}
 		}
 	}
@@ -67,6 +74,7 @@ public class reset : MonoBehaviour {
 		spinning = false;
 		f = 0.0f;
 		launched = true;
+		launch_time = Time.timeSinceLevelLoad;
 	}
 	
 	void OnGUI(){
