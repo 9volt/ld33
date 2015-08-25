@@ -14,6 +14,8 @@ public class reset : MonoBehaviour {
 	public Texture2D bactex;
 	public Texture2D full_tex;
 	public Font font;
+	public AudioSource source;
+	public AudioClip launch;
 	// Use this for initialization
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody>();
@@ -39,7 +41,9 @@ public class reset : MonoBehaviour {
 						f += 25f;
 					}
 					rb.AddTorque(rb.angularVelocity + Vector3.right * 10f);
+					source.pitch = f / 666f;
 				} else {
+					source.Play();
 					spinning = true;
 					rb.useGravity = false;
 					rb.velocity = Vector3.zero;
@@ -54,6 +58,9 @@ public class reset : MonoBehaviour {
 	}
 
 	void Launch(){
+		source.Stop();
+		source.pitch = 1f;
+		source.PlayOneShot(launch);
 		rb.AddForce(Vector3.forward * f);
 		rb.AddForce(Vector3.right * 20f);
 		rb.useGravity = true;
@@ -63,19 +70,20 @@ public class reset : MonoBehaviour {
 	}
 	
 	void OnGUI(){
+		GUI.skin.box.normal.background = bactex;
 
 		if (spinning) {
 			GUI.Label (new Rect ((Screen.width / 2) + 230, (Screen.height / 2) + 52, 200, Screen.height), (f / 20).ToString () + "%", gs);
-			GUI.skin.box.normal.background = bactex;
 			GUI.Box (new Rect ((Screen.width / 2) -200, (Screen.height / 2) + 50, 400, 20),"");
-			if (f != null){
-				if ( f < 2000f){
-					GUI.skin.box.normal.background = tex;
-				}else{
-					GUI.skin.box.normal.background = full_tex;
-				}
-				GUI.Box (new Rect ((Screen.width / 2)-200, (Screen.height / 2) + 50, f/5, 20),"");
+			if (f > 0f && f < 2000f){
+				GUI.skin.box.normal.background = tex;
+			} else if (f == 0f) {
+				Debug.Log("grey");
+				GUI.skin.box.normal.background = bactex;
+			} else {
+				GUI.skin.box.normal.background = full_tex;
 			}
+			GUI.Box (new Rect ((Screen.width / 2)-200, (Screen.height / 2) + 50, f/5, 20),"");
 		} else if (!launched) {
 			GUI.Box (new Rect ((Screen.width / 2) -200, (Screen.height / 2) + 50, 400, 20),"");
 			GUI.Label (new Rect ((Screen.width / 2) - 100,  (Screen.height / 2) + 50, 200, Screen.height), "Hold [SPACE] to charge", gs);

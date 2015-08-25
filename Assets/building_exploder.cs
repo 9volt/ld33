@@ -46,6 +46,7 @@ public class building_exploder : MonoBehaviour {
 			Instantiate(explosion, GetRandomPointInBoxCollider(col), collision.transform.rotation);
 			health--;
 			if(health == 0){
+				Camera.main.GetComponent<gui>().increaseScore(name + " Destroyed", points * 3);
 				Instantiate(fire, GetRandomPointInBoxCollider(col), collision.transform.rotation);
 				rend.material.mainTexture = burned;
 				rend.material.SetTexture("_EmissionMap", null);
