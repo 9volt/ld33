@@ -9,6 +9,7 @@ TagManager:
   - Car
   - Fire
   - Wall
+  - Floor
   layers:
   - Default
   - TransparentFX

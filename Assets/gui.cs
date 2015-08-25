@@ -84,7 +84,7 @@ public class gui : MonoBehaviour {
 	}
 
 	void Rampage(string t){
-		if (t == rampage_target) {
+		if(rampage && t == rampage_target) {
 			rampage_total++;
 			if(rampage_total == rampage_goal){
 				rampage = false;

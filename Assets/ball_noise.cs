@@ -3,7 +3,6 @@ using System.Collections;
 
 public class ball_noise : MonoBehaviour {
 	public AudioSource source;
-	public GameObject floor;
 	public AudioSource roller;
 	Rigidbody rb;
 	// Use this for initialization
@@ -22,13 +21,13 @@ public class ball_noise : MonoBehaviour {
 		if (collision.gameObject.tag == "Wall") {
 			source.Play ();
 		}
-		if (collision.gameObject == floor) {
+		if (collision.gameObject.tag == "Floor") {
 			roller.Play();
 		}
 	}
 
 	void OnCollisionExit(Collision collision){
-		if (collision.gameObject == floor) {
+		if (collision.gameObject.tag == "Floor") {
 			roller.Stop();
 		}
 	}

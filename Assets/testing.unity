@@ -398,7 +398,7 @@ GameObject:
   - 23: {fileID: 131667795}
   m_Layer: 0
   m_Name: road (12)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -694,7 +694,7 @@ GameObject:
   - 23: {fileID: 183806633}
   m_Layer: 0
   m_Name: road (11)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -754,10 +754,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 57
---- !u!1 &194018488 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100000, guid: 2b127815fd0f2074eae3a0c6a4786d0b, type: 2}
-  m_PrefabInternal: {fileID: 405228095}
 --- !u!1001 &211369729
 Prefab:
   m_ObjectHideFlags: 0
@@ -852,7 +848,7 @@ GameObject:
   - 23: {fileID: 259014515}
   m_Layer: 0
   m_Name: road (14)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -925,7 +921,7 @@ GameObject:
   - 23: {fileID: 291445601}
   m_Layer: 0
   m_Name: road (10)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1589,6 +1585,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 922c0a8c047d5c843ba8e2763c38afbf, type: 2}
+    - target: {fileID: 100000, guid: 2b127815fd0f2074eae3a0c6a4786d0b, type: 2}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b127815fd0f2074eae3a0c6a4786d0b, type: 2}
   m_IsPrefabParent: 0
@@ -2084,7 +2084,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 531429106}
-  floor: {fileID: 194018488}
   roller: {fileID: 531429108}
 --- !u!82 &531429108
 AudioSource:
@@ -4245,7 +4244,7 @@ GameObject:
   - 23: {fileID: 1422195250}
   m_Layer: 0
   m_Name: road (15)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4809,7 +4808,7 @@ GameObject:
   - 23: {fileID: 1613868325}
   m_Layer: 0
   m_Name: road (18)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5303,7 +5302,7 @@ GameObject:
   - 23: {fileID: 1789551475}
   m_Layer: 0
   m_Name: road (9)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5376,7 +5375,7 @@ GameObject:
   - 23: {fileID: 1838447787}
   m_Layer: 0
   m_Name: road (13)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6349,7 +6348,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: .206
+  m_Volume: .0850000009
   m_Pitch: 1
   Loop: 0
   Mute: 0
